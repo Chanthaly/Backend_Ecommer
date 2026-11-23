@@ -30,7 +30,7 @@ routes.post('/loginUser',Login);
 
 // user route
 routes.get('/getUser/:user_id',verifyJWT ,getUser);
-routes.get('/getUsers',verifyJWT,getUsers);
+routes.get('/getUsers',getUsers);
  routes.delete('/deleteUser',verifyJWT,DeleteUsers);
  routes.put('/updateUser/:user_id',verifyJWT,EditUser);
  // product route
