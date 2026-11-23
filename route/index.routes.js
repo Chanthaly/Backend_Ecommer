@@ -1,4 +1,4 @@
-import express, { Router } from 'express';
+import express from 'express';
 import { DeleteUsers, EditUser, getUser, getUsers } from '../controller/user.Controller.js';
 import { Login, Register } from '../controller/user.auth.js';
 import { verifyJWT } from '../middleware/jwt.middle.js';
@@ -11,7 +11,7 @@ import { createCate, deleteCate, editeCate, getCategorie, getCategories } from '
 export const routes = express.Router();
 
 
-   router.get('/', (req, res) => {
+routes.get('/', (req, res) => {
     res.json({
         success: true,
         message: 'E-commer Backend is running!'
@@ -19,7 +19,7 @@ export const routes = express.Router();
   })
 
 
-router.get('/health', (req, res) => {
+routes.get('/health', (req, res) => {
     res.json({
         success: true,
         message: 'API is working'
