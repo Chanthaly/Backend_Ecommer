@@ -11,11 +11,12 @@ import { createCate, deleteCate, editeCate, getCategorie, getCategories } from '
 export const routes = express.Router();
 
 
-  // router.get('/', (req, res) => {
+   router.get('/', (req, res) => {
     res.json({
         success: true,
         message: 'E-commer Backend is running!'
     });
+  })
 
 
 router.get('/health', (req, res) => {
