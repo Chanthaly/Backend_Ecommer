@@ -11,7 +11,19 @@ import { createCate, deleteCate, editeCate, getCategorie, getCategories } from '
 export const routes = express.Router();
 
 
+  // router.get('/', (req, res) => {
+    res.json({
+        success: true,
+        message: 'E-commer Backend is running!'
+    });
 
+
+router.get('/health', (req, res) => {
+    res.json({
+        success: true,
+        message: 'API is working'
+    });
+});
 // user Auth 
 routes.post('/createUser',Register );
 routes.post('/loginUser',Login);

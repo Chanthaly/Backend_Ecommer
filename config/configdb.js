@@ -6,6 +6,10 @@ import *  as dotenv from 'dotenv'
     user: 'root',
     password: 'root',
      database: process.env.DB,
+     ssl: {
+       minVersion:'TLSV1.2'
+       
+     },
      connectionLimit: 10,
      waitForConnections: true,
      queueLimit: 0
