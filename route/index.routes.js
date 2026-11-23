@@ -17,12 +17,10 @@ routes.get('/', (req, res) => {
         message: 'E-commer Backend is running!'
     });
   })
-
-
 routes.get('/health', (req, res) => {
-    res.json({
+    res.status(200).json({
         success: true,
-        message: 'API is working'
+        message: 'Server is healthy'
     });
 });
 // user Auth 

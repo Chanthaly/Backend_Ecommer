@@ -1,23 +1,30 @@
+
 import { pool } from "../config/configdb.js";
- const dbExecute = async(sql,params=[]) => {
-  let connection;
-try
-{
 
-connection = await  pool.promise().getConnection();
-const   [results] =  await connection.execute(sql,params)
-return results;
+const dbExecute = async (sql, params = []) => {
+    let connection;
 
-}
-catch(err) {
- console.log(` ❌ connection error  please check the database tryagain`,err)
- throw err;
-}
-finally{
+    try {
+        connection = await pool.promise().getConnection();
 
-    if (connection) 
-        connection.release();
-}
+        const [results] = await connection.execute(sql, params);
 
-  };
+        return results;
+
+    } catch (err) {
+        console.error("❌ Database Error:", {
+            code: err.code,
+            message: err.message,
+            sqlMessage: err.sqlMessage
+        });
+
+        throw err;
+
+    } finally {
+        if (connection) {
+            connection.release();
+        }
+    }
+};
+
 export default dbExecute;
