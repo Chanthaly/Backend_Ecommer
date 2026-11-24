@@ -5,7 +5,7 @@ const dbExecute = async (sql, params = []) => {
     let connection;
 
     try {
-        connection = await pool.promise().getConnection();
+        connection = await pool.getConnection();
 
         const [results] = await connection.execute(sql, params);
 
