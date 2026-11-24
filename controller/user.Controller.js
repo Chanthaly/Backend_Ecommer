@@ -62,8 +62,8 @@ export const getUsers = async(req,res) => {
 
     }
     catch(err){
-      return res.status(401).json({
-        resultCode:401,
+      return res.status(500).json({
+        resultCode:500,
         message:serviceMessage.SERVER_ERR
       })
     }
