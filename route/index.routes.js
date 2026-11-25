@@ -10,6 +10,16 @@ import { uploadFile } from '../controller/upload.controller.js';
 import { createCate, deleteCate, editeCate, getCategorie, getCategories } from '../controller/Categoreis.controller.js';
 export const routes = express.Router();
 
+const requireAdmin = (req, res, next) => {
+    if (req.user_premission !== 'admin') {
+        return res.status(403).json({
+            resultCode: 403,
+            message: 'Forbidden'
+        });
+    }
+
+    next();
+};
 
 routes.get('/', (req, res) => {
     res.json({
@@ -24,7 +34,7 @@ routes.get('/health', (req, res) => {
     });
 });
 // user Auth 
-routes.post('/createUser',Register );
+routes.post('/createUser', verifyJWT, requireAdmin, Register);
 routes.post('/loginUser',Login);
 
 
